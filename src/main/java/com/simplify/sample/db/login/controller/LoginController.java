@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Controller
@@ -19,7 +18,8 @@ public class LoginController {
 
     @GetMapping("/")
     public String loginPage(){
-        return "/index";
+        return "/index.html";
+
     }
 
     //사용자로 부터 id,pass를 받아 회원 정보를 체크
@@ -33,7 +33,7 @@ public class LoginController {
         try {
             int isUser = userInfoService.checkUser(userModel);
             if(isUser != 0){
-                return "/indexbackup";
+                return "/assets/index.html";
             }
          }
         catch (Exception e){

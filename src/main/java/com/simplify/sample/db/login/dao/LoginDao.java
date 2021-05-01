@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class LoginDao {
 
-    protected static final String NAMESPACE = "com.gachonmeeting.demo.db.login.dao.";
+    protected static final String NAMESPACE = "com.simplify.sample.db.login.dao";
 
     @Autowired
     private SqlSession sqlSession;

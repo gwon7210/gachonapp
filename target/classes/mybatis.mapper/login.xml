@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.gachonmeeting.demo.db.login.dao">
+<mapper namespace="com.simplify.sample.db.login.dao">
 
-    <insert id="registerInfo"  parameterType="com.gachonmeeting.demo.db.login.model.UserModel">
+    <insert id="registerInfo"  parameterType="UserModel">
         INSERT INTO userinfo (id, pass) VALUES (#{id}, #{pass});
     </insert>
 
-    <insert id="checkUser"  parameterType="com.gachonmeeting.demo.db.login.model.UserModel">
+    <insert id="checkUser"  parameterType="UserModel">
           select count(*) from user where id = (#{id}) and pass=(#{pass})
     </insert>
 
