@@ -14,19 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
 
     @Autowired
-    UserInfoService userInfoService;
+        UserInfoService userInfoService;
 
-    @GetMapping("/")
-    public String loginPage(){
-        return "/index.html";
+        @GetMapping("/")
+        public String loginPage(){
+            return "/index.html";
+        }
 
-    }
+        //사용자로 부터 id,pass를 받아 회원 정보를 체크
+        @PostMapping("/checkuser")
+        public String checkUser(String id, String password, HttpServletRequest req) {
 
-    //사용자로 부터 id,pass를 받아 회원 정보를 체크
-    @PostMapping("/checkuser")
-    public String checkUser(String id, String password, HttpServletRequest req) {
-
-        UserModel userModel = new UserModel();
+            UserModel userModel = new UserModel();
         userModel.setId(id);
         userModel.setPassword(password);
 
