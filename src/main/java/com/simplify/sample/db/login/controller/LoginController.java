@@ -5,7 +5,8 @@ package com.simplify.sample.db.login.controller;
  import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+ import org.springframework.ui.Model;
+ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,7 +24,7 @@ public class LoginController {
 
         //사용자로 부터 id,pass를 받아 회원 정보를 체크
         @PostMapping("/checkuser")
-        public String checkUser(String id, String password, HttpServletRequest req) {
+        public String checkUser(String id, String password, Model model) {
 
             UserModel userModel = new UserModel();
             userModel.setId(id);
@@ -31,8 +32,9 @@ public class LoginController {
 
         try {
             int isUser = userInfoService.checkUser(userModel);
+            model.addAttribute("userModel", userModel);
             if(isUser != 0){
-                return "/assets/index.html";
+                return "/mypage.html";
             }
          }
         catch (Exception e){
