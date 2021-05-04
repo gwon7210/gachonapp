@@ -19,26 +19,26 @@ public class UserInfoService {
         return loginDao.checkUser(usermodel);
     }
 
-    /**
-     * 유저 계정 정보 저장
-     *
-     * @param usermodel
-     * @return
-     * @throws Exception
-     */
-     public int registerInfo(UserModel usermodel) throws Exception {
-          return loginDao.registerInfo(usermodel);
-     }
-
-    /**
-     * 유저 정보 저장
-     *
-     * @param usermodel
-     * @return
-     * @throws Exception
-     */
-    public int registerUserEntry(UserModel usermodel) throws Exception {
-        return loginDao.registerUserEntry(usermodel);
-    }
+//    /**
+//     * 유저 계정 정보 저장
+//     *
+//     * @param usermodel
+//     * @return
+//     * @throws Exception
+//     */
+//     public int registerInfo(UserModel usermodel) throws Exception {
+//          return loginDao.registerInfo(usermodel);
+//     }
+//
+//    /**
+//     * 유저 정보 저장
+//     *
+//     * @param usermodel
+//     * @return
+//     * @throws Exception
+//     */
+//    public int registerUserEntry(UserModel usermodel) throws Exception {
+//        return loginDao.registerUserEntry(usermodel);
+//    }
 
 }

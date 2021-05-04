@@ -26,8 +26,8 @@ public class LoginController {
         public String checkUser(String id, String password, HttpServletRequest req) {
 
             UserModel userModel = new UserModel();
-        userModel.setId(id);
-        userModel.setPassword(password);
+            userModel.setId(id);
+            userModel.setPassword(password);
 
         try {
             int isUser = userInfoService.checkUser(userModel);
@@ -36,6 +36,7 @@ public class LoginController {
             }
          }
         catch (Exception e){
+            log.error(e.getMessage());
             log.error("회원정보가 없습니다.");
         }
 

@@ -12,7 +12,7 @@ import lombok.ToString;
 public class UserModel {
     private String id;
     private String password;
-
+    private String registerdate;
     private String gachonId;
     private String gachonPass;
 

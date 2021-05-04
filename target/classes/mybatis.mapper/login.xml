@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.simplify.sample.db.login.dao">
+<mapper namespace="Account">
 
     <insert id="registerInfo"  parameterType="UserModel">
-        INSERT INTO userinfo (id, pass) VALUES (#{id}, #{pass});
+        INSERT INTO userinfo (id, password) VALUES (#{id}, #{password});
     </insert>
 
-    <insert id="checkUser"  parameterType="UserModel">
-          select count(*) from user where id = (#{id}) and pass=(#{pass})
-    </insert>
+    <select id="checkUser"  parameterType="UserModel" resultType="int">
+          select count(*) from user where id = (#{id}) and password=(#{password})
+    </select>
 
 
 </mapper>
