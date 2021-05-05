@@ -53,7 +53,6 @@
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#loginplace" class="nav-link scrollto"><i class="bx bx-user"></i> <span>MyPage</span></a></li>
           <li><a href="#MindMap" class="nav-link scrollto"><i class="bx bx-user"></i> <span>나의 MindMap</span></a></li>
-           <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
           <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
@@ -253,29 +252,64 @@
 
         <div class="section-title">
           <h2>나의 마인드맵</h2>
-          <p>이곳에서 마인드맵은 자신을 한눈에 나타내는 </p>
+          <p>여기서 마인드맵은 상대방이 나 자신을 처음 볼 때 알 수 있는 정보들입니다. </p>
         </div>
 
         <div class="row">
           <div class="col-lg-6" data-aos="fade-up">
-            <h3 class="resume-title">Sumary</h3>
-            <div class="resume-item pb-0">
-              <h4>Alex Smith</h4>
-              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-              <ul>
-                <li>Portland par 127,Orlando, FL</li>
-                <li>(123) 456-7891</li>
-                <li>alice.barkley@example.com</li>
-              </ul>
+            <h3 class="resume-title">간단한 자기 소개를 해주세요!</h3>
+
+            <div class="container">
+              <form action="/insertProc" method="post">
+                <div class="form-group">
+                  <label for="content2">내용</label>
+                  <textarea class="form-control" id="content2" name="content" rows="2"></textarea>
+                </div>
+               </form>
             </div>
 
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Master of Fine Arts &amp; Graphic Design</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+            <div class="resume-item pb-0">
+              <h4>MBTI</h4>
+              <p><em>당신의 mbti 성향을 말해주세요!</em></p>
+
+              <select class="selectpicker">
+                <optgroup label="분석형">
+                  <option>INTJ - 용의주도한 전략가 - 과학자형</option>
+                  <option>INTP - 논리적인 사색가 - 아이디어형</option>
+                  <option>INTJ - 대담한 통솔자 - 과학자형</option>
+                  <option>ENTP - 뜨거운 논쟁을 즐기는 변론가 - 발명가형</option>
+                </optgroup>
+                <optgroup label="탐험가형">
+                  <option>ISTP - 만능 재주꾼 - 백과사전형</option>
+                  <option>ISFP - 호기심 많은 예술가 - 성인군자형</option>
+                  <option>ESTP - 모험을 즐기는 사업가 - 활동가형</option>
+                  <option>ESFP - 자유로운 영혼의 연예인 - 사교형</option>
+                </optgroup>
+                <optgroup label="관리자형">
+                  <option>ISTJ - 청렴결백한 논리주의자 - 소금형</option>
+                  <option>ISFJ - 용감한 수호자 - 권력형</option>
+                  <option>ESTJ - 엄격한 관리자 - 사업가형</option>
+                  <option>ESFJ - 사교적인 외교관 - 친선도모형</option>
+                </optgroup>
+                <optgroup label="외교형">
+                  <option>INFJ -선의의 옹호자 - 예언자형</option>
+                  <option>INFP - 열정적인 중재자 - 잔다르크형</option>
+                  <option>ENFJ - 정의로운 사회운동가 - 언변능숙형</option>
+                  <option>ENFP - 재기발랄한 활동가 - 스파크형</option>
+                </optgroup>
+              </select>
+
+              <p><em>자신의 mbti를 모르시나요?</em></p>
+              <input type="button" value="mbti 검사하러 가기" onclick="window.open('https://bit.ly/3h3MY3I')"></input>
             </div>
+
+            <h3 class="resume-title">자신을 나타낼 귀여운 동물 사진을 골라주세요</h3>
+            <div class="resume-item">
+               <p><em>매칭과정에서 상대방에게 보여지는 동물사진입니다.</em></p>
+             </div>
+            <div id="my-icon-select">동물사진</div>
+
+
             <div class="resume-item">
               <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
               <h5>2010 - 2014</h5>
@@ -659,9 +693,26 @@
   <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../assets/vendor/typed.js/typed.min.js"></script>
   <script src="../assets/vendor/waypoints/noframework.waypoints.js"></script>
-
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+
+  <script type="text/javascript">
+
+    var iconSelect;
+
+    window.onload = function(){
+
+      iconSelect = new IconSelect("my-icon-select");
+
+      var icons = [];
+      icons.push({'iconFilePath':'assets/img/favicon.png', 'iconValue':'1'});
+      icons.push({'iconFilePath':'assets/img/favicon.png', 'iconValue':'2'});
+      icons.push({'iconFilePath':'assets/img/favicon.png', 'iconValue':'3'});
+
+      iconSelect.refresh(icons);
+
+    };
+  </script>
 
 </body>
 
