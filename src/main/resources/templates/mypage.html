@@ -5,8 +5,9 @@
 <head >
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <title>iPortfolio Bootstrap Template - Index</title>
+   <title>iPortfolio Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -38,15 +39,13 @@
 
 <body>
 
+
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="d-flex flex-column">
-
-
-
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
@@ -81,6 +80,7 @@
 
       </div>
     </section>
+
 
 
 
@@ -122,13 +122,7 @@
                     </div>
                   </div>
                 </div>
-
-
-
         </div>
-
-
-
       </div>
     </section><!-- End About Section -->
 
@@ -307,47 +301,30 @@
             <div class="resume-item">
                <p><em>매칭과정에서 상대방에게 보여지는 동물사진입니다.</em></p>
              </div>
-            <div id="my-icon-select">동물사진</div>
-
-
-            <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
             </div>
-          </div>
+
+
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Professional Experience</h3>
+            <h3 class="resume-title">재미있는 질문들을 고르고 답해보세요!</h3>
             <div class="resume-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
+               <p><em>자신의 가치관을 나타낼 수 있는 중요한 기회입니다 :) </em></p>
+
+              <form action="/question" method="get">
               <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
+                <li><button class="btn btn-outline-primary" name="a">운동</button><button class="btn btn-outline-primary" name="a">흡연</button><button class="btn btn-outline-primary" name="a">정치</button><button class="btn btn-outline-primary" name="a">책</button></li>
+                <li><button class="btn btn-outline-primary" name="a">영화</button><button class="btn btn-outline-primary" name="a">반려동물</button><button class="btn btn-outline-primary" name="a">전공</button><button class="btn btn-outline-primary" name="a">강의</button></li>
+                <li><button class="btn btn-outline-primary" name="a">종교</button><button class="btn btn-outline-primary" name="a">노래</button><button class="btn btn-outline-primary" name="a">결혼</button><button class="btn btn-outline-primary" name="a">성격</button></li>
+                <li><button class="btn btn-outline-primary" name="a">음주</button><button class="btn btn-outline-primary" name="a">게임</button><button class="btn btn-outline-primary" name="a">꿈</button><button class="btn btn-outline-primary" name="a">거주지</button></li>
               </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div>
-          </div>
+              </form>
+         </div>
         </div>
-
+        </div>
       </div>
-    </section><!-- End Resume Section -->
+    </section>
 
-    <!-- ======= Portfolio Section ======= -->
+
+     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio section-bg">
       <div class="container">
 
@@ -696,23 +673,6 @@
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
 
-  <script type="text/javascript">
-
-    var iconSelect;
-
-    window.onload = function(){
-
-      iconSelect = new IconSelect("my-icon-select");
-
-      var icons = [];
-      icons.push({'iconFilePath':'assets/img/favicon.png', 'iconValue':'1'});
-      icons.push({'iconFilePath':'assets/img/favicon.png', 'iconValue':'2'});
-      icons.push({'iconFilePath':'assets/img/favicon.png', 'iconValue':'3'});
-
-      iconSelect.refresh(icons);
-
-    };
-  </script>
 
 </body>
 

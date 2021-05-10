@@ -19,7 +19,7 @@ public class LoginController {
 
         @GetMapping("/")
         public String loginPage(){
-            return "/index.html";
+            return "/mypage.html";
         }
 
         //사용자로 부터 id,pass를 받아 회원 정보를 체크
@@ -42,7 +42,7 @@ public class LoginController {
             log.error("회원정보가 없습니다.");
         }
 
-        return "/test.html";
+        return "/errorpage.html";
     }
 
     @GetMapping("/register")
