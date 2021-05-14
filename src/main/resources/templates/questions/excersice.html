@@ -12,22 +12,22 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="../assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio - v3.1.0
@@ -309,12 +309,12 @@
             <div class="resume-item">
                <p><em>자신의 가치관을 나타낼 수 있는 중요한 기회입니다 :) </em></p>
 
-              <form id="answer">
+              <form action="/question" method="get">
               <ul>
-                <li><button class="btn btn-outline-primary" onclick="gotoAnswer('excersice')">운동</button><button class="btn btn-outline-primary" >흡연</button><button class="btn btn-outline-primary" >정치</button><button class="btn btn-outline-primary" >책</button></li>
-                <li><button class="btn btn-outline-primary" value="movie">영화</button><button class="btn btn-outline-primary" >반려동물</button><button class="btn btn-outline-primary" >전공</button><button class="btn btn-outline-primary" >강의</button></li>
-                <li><button class="btn btn-outline-primary" value="religion">종교</button><button class="btn btn-outline-primary" >노래</button><button class="btn btn-outline-primary" >결혼</button><button class="btn btn-outline-primary" >성격</button></li>
-                <li><button class="btn btn-outline-primary" value="drink">음주</button><button class="btn btn-outline-primary" >게임</button><button class="btn btn-outline-primary" >꿈</button><button class="btn btn-outline-primary" >거주지</button></li>
+                <li><button class="btn btn-outline-primary" value="excersice">운동</button><button class="btn btn-outline-primary" >흡연</button><button class="btn btn-outline-primary" >정치</button><button class="btn btn-outline-primary" >책</button></li>
+                <li><button class="btn btn-outline-primary" >영화</button><button class="btn btn-outline-primary" >반려동물</button><button class="btn btn-outline-primary" >전공</button><button class="btn btn-outline-primary" >강의</button></li>
+                <li><button class="btn btn-outline-primary" >종교</button><button class="btn btn-outline-primary" >노래</button><button class="btn btn-outline-primary" >결혼</button><button class="btn btn-outline-primary" >성격</button></li>
+                <li><button class="btn btn-outline-primary" >음주</button><button class="btn btn-outline-primary" >게임</button><button class="btn btn-outline-primary" >꿈</button><button class="btn btn-outline-primary" >거주지</button></li>
               </ul>
               </form>
          </div>
@@ -323,19 +323,6 @@
       </div>
     </section>
 
-    <script type="text/javascript">
-      function gotoAnswer(topic) {
-
-        var url = '/question/' + topic
-        var form = document.getElementById('answer');
-
-        form.setAttribute('method', 'get');
-        form.setAttribute('action', url);
-
-        form.submit();
-
-      }
-    </script>
 
      <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio section-bg">
