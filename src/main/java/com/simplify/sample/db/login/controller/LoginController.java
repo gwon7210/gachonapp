@@ -19,6 +19,7 @@ public class LoginController {
 
         @GetMapping("/")
         public String loginPage(){
+
             return "/mypage.html";
         }
 
@@ -47,6 +48,7 @@ public class LoginController {
 
     @GetMapping("/register")
     public String registerPage(){
+
         return "/index.html";
     }
 //
