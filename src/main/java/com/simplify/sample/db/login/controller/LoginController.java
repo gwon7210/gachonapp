@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
  import org.springframework.ui.Model;
  import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Slf4j
 @Controller
 public class LoginController {
@@ -20,10 +18,10 @@ public class LoginController {
         @GetMapping("/")
         public String loginPage(){
 
-            return "/mypage.html";
+            return "/main/page";
         }
 
-        //사용자로 부터 id,pass를 받아 회원 정보를 체크
+         //사용자로 부터 id,pass를 받아 회원 정보를 체크
         @PostMapping("/checkuser")
         public String checkUser(String id, String password, Model model) {
 
@@ -35,7 +33,7 @@ public class LoginController {
             int isUser = userInfoService.checkUser(userModel);
             model.addAttribute("userModel", userModel);
             if(isUser != 0){
-                return "/mypage.html";
+                return "/main/page";
             }
          }
         catch (Exception e){

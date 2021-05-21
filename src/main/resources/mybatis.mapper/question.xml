@@ -4,9 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Question">
 
-    <select id="getQuestion"  parameterType="String" resultType="List">
-          select topic, name, discription, content from questionEntry where topic = (#{topic})
+    <select id="getQuestionEntry"  parameterType="String" resultType="QuestionEntryModel">
+          SELECT topic, name ,discription, content FROM questionEntry WHERE topic = (#{topic})
     </select>
 
+    <select id="getQuestion"  parameterType="String" resultType="QuestionModel">
+        SELECT discription, content FROM question WHERE topic = (#{topic})
+    </select>
 
 </mapper>

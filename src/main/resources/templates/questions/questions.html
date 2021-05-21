@@ -65,47 +65,48 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>운동 sports</h2>
-          <p>좋아하는 운동을 골라주세요!</p>
+          <h2 th:text="${topic}"></h2>
+          <p th:text="${questionModel.content}">좋아하는 운동을 골라주세요!</p>
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-briefcase"></i></div>
-            <h4 class="title"><a href="">축구</a></h4>
-            <p class="description"> </p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">농구</a></h4>
-            <p class="description"> </p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description"> </p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="bi bi-binoculars"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description"> </p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="bi bi-brightness-high"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description"> </p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description"> </p>
-          </div>
+
+          <table>
+            <form id="sendanswer" action="/question/getanswer" method="post">
+
+            <tr th:each="questionModel : ${questionEntryModelList}">
+              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                <h4 class="title">
+                   <button  class="btn btn-light" th:text="${questionModel.name}" th:value="${questionModel.name}" th:attr="onclick=|getanswer('${questionModel.name}')|">
+
+
+                  </button>
+                </h4>
+              </div>
+            </tr>
+
+            </form>
+          </table>
         </div>
 
       </div>
+
     </section><!-- End Services Section -->
 
+       <script type="text/javascript">
+        function getanswer(answer) {
 
+          const form = document.getElementById('sendanswer')
+          const noahinput = document.createElement('input')
+
+          noahinput.setAttribute("id","newinput");
+          noahinput.setAttribute("value",answer);
+          noahinput.setAttribute("name", "answer")
+          form.appendChild(noahinput)
+          form.submit()
+      }
+
+    </script>
 
   </main><!-- End #main -->
 

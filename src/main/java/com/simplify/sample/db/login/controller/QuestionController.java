@@ -1,14 +1,14 @@
 package com.simplify.sample.db.login.controller;
 
-import com.simplify.sample.db.login.dao.QuestionDao;
+import com.simplify.sample.db.login.model.QuestionEntryModel;
 import com.simplify.sample.db.login.model.QuestionModel;
 import com.simplify.sample.db.login.service.QuestionService;
 import com.simplify.sample.db.login.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,13 +24,22 @@ public class QuestionController {
         QuestionService questionService;
 
         @GetMapping("/question/{topic}")
-        public String loginPage(@PathVariable String topic) throws Exception {
+        public String questionPage(@PathVariable String topic, Model model) throws Exception {
 
-            List<QuestionModel> model = questionService.getQuestion(topic);
+            List<QuestionEntryModel> questionEntryModelList = questionService.getQuestionEntry(topic);
+            QuestionModel questionModel = questionService.getQuestion(topic);
 
-            String url = "/questions/".concat(topic);
-            return url;
+            model.addAttribute("questionEntryModelList", questionEntryModelList);
+            model.addAttribute("questionModel", questionModel);
+            model.addAttribute("topic", topic);
+            return "/questions/questions";
         }
+
+    @PostMapping("/question/getanswer")
+    public String getanswer(String answer) throws Exception {
+
+        return "/main/page";
+    }
 
 
 }
