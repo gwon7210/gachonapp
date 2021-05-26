@@ -1,6 +1,7 @@
 package com.simplify.sample.db.login.dao;
 
 
+import com.simplify.sample.db.login.model.QnAmodel;
 import com.simplify.sample.db.login.model.QuestionEntryModel;
 import com.simplify.sample.db.login.model.QuestionModel;
 import org.apache.ibatis.session.SqlSession;
@@ -26,4 +27,7 @@ public class QuestionDao {
         return sqlSession.selectOne(NAMESPACE + "getQuestion", topic);
     }
 
+    public int createUserAnswer(QnAmodel model) throws Exception{
+        return sqlSession.insert(NAMESPACE + "createAnswer", model);
+    }
 }

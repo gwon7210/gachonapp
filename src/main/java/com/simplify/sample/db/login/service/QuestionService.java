@@ -2,6 +2,7 @@ package com.simplify.sample.db.login.service;
 
 
 import com.simplify.sample.db.login.dao.QuestionDao;
+import com.simplify.sample.db.login.model.QnAmodel;
 import com.simplify.sample.db.login.model.QuestionEntryModel;
 import com.simplify.sample.db.login.model.QuestionModel;
 import lombok.extern.slf4j.Slf4j;
@@ -25,5 +26,8 @@ public class QuestionService {
         return questionDao.getQuestion(topic);
     }
 
+    public int createUserAnswer(QnAmodel model) throws Exception {
+        return questionDao.createUserAnswer(model);
+    }
 
 }

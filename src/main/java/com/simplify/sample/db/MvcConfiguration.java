@@ -1,14 +1,17 @@
 package com.simplify.sample.db;
 
 
-import org.springframework.context.annotation.Bean;
+import com.simplify.sample.db.support.Interceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
@@ -23,10 +26,18 @@ public class MvcConfiguration implements WebMvcConfigurer {
 
     }
 
-//    @Bean
-//    public InternalResourceViewResolver viewResolver() {
-//         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//         resolver.setSuffix(".html");
-//        return resolver;
-//    }
+    /*
+     * 로그인 인증 Interceptor 설정
+     * */
+    @Autowired
+    Interceptor interceptor;
+
+    @Value("${resources.notload.list}") // application.properties에 설정된 값을 가지고 오기
+    private List<String> notLoadList;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(interceptor).addPathPatterns("/**").excludePathPatterns(notLoadList);
+    }
+
 }

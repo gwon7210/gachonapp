@@ -12,4 +12,8 @@
         SELECT discription, content FROM question WHERE topic = (#{topic})
     </select>
 
+    <insert id="createAnswer"  parameterType="QnAmodel" >
+        INSERT INTO id, topic, anwser FROM userQnA
+    </insert>
+
 </mapper>

@@ -1,5 +1,6 @@
 package com.simplify.sample.db.login.controller;
 
+import com.simplify.sample.db.login.model.QnAmodel;
 import com.simplify.sample.db.login.model.QuestionEntryModel;
 import com.simplify.sample.db.login.model.QuestionModel;
 import com.simplify.sample.db.login.service.QuestionService;
@@ -36,7 +37,13 @@ public class QuestionController {
         }
 
     @PostMapping("/question/getanswer")
-    public String getanswer(String answer) throws Exception {
+    public String getanswer(String answer, String topic) throws Exception {
+
+        QnAmodel qnamodel = new QnAmodel();
+        qnamodel.setAnswer(answer);
+        qnamodel.setTopic(topic);
+
+        int rowCount = questionService.createUserAnswer(qnamodel);
 
         return "/main/page";
     }

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
  import org.springframework.ui.Model;
  import org.springframework.web.bind.annotation.*;
 
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpSession;
+
 @Slf4j
 @Controller
 public class LoginController {
@@ -15,80 +18,49 @@ public class LoginController {
     @Autowired
         UserInfoService userInfoService;
 
-        @GetMapping("/")
+        @GetMapping("/first")
         public String loginPage(){
 
-            return "/main/page";
+            return "/index";
         }
 
          //사용자로 부터 id,pass를 받아 회원 정보를 체크
         @PostMapping("/checkuser")
-        public String checkUser(String id, String password, Model model) {
+        public String checkUser(String id, String password, Model model, HttpServletRequest request) throws Exception {
 
             UserModel userModel = new UserModel();
             userModel.setId(id);
             userModel.setPassword(password);
+            int isUser =0;
 
-        try {
-            int isUser = userInfoService.checkUser(userModel);
-            model.addAttribute("userModel", userModel);
-            if(isUser != 0){
-                return "/main/page";
+            try {
+                isUser = userInfoService.checkUser(userModel);
+                model.addAttribute("userModel", userModel);
+            } catch (Exception e){
+                log.error("로그인 시도중 오류가 발생했습니다.");
             }
-         }
-        catch (Exception e){
-            log.error(e.getMessage());
-            log.error("회원정보가 없습니다.");
-        }
 
-        return "/errorpage.html";
-    }
+            if(isUser != 0){
+                request.getSession().setAttribute("userModel", userModel);
+                return "/main/page";
+            }else{
+                request.getSession().setAttribute("userModel", null);
+                return "/index";
+            }
+
+        }
 
     @GetMapping("/register")
     public String registerPage(){
 
         return "/index.html";
     }
-//
-//    @PostMapping("/checkgachonstu")
-//    public void isGachonStudent(UserModel usermodel){
-//
-//        //가천대학교 학생인지 검사한 후 회원가입 페이지를 보여준다.
-//        //인증 방식은 알아보기
-////        if("가천대생이 맞다면"){
-////            return "redirect:/registerinfo";
-////        }else{
-////            return "/register";
-////        }
-//
-//    }
-//
-//    //id,pass를 등록한다.
-//    @PostMapping("/registeruser")
-//    public String registeruser(@RequestBody UserModel usermodel, HttpServletResponse response) throws Exception {
-//
-//        int rowCount = userInfoService.registerInfo(usermodel);
-//
-//        if(rowCount == 0){
-//            log.error("회원가입 도중 오류가 발생했습니다.");
-//        }
-//
-//        return "/registeruserenrty";
-//    }
-//
-//    //추가적인 정보들을 등록한다.
-//    //등록 완료 후 myroom으로 간다.
-//    @PostMapping("/registeruserenrty")
-//    public String registerUserEntry(@RequestBody UserModel usermodel, HttpServletResponse response) throws Exception {
-//
-//        int rowCount = userInfoService.registerUserEntry(usermodel);
-//
-//        if(rowCount == 0){
-//            log.error("정보입력도중 오류가 발생했습니다.");
-//        }
-//
-//        return "/myroom";
-//    }
+
+    @RequestMapping(value="/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // 세션 전체를 날려버림
+        return "redirect:/index"; // 로그아웃 후 게시글 목록으로 이동하도록...함
+    }
 
 
 
