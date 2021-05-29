@@ -31,7 +31,7 @@ public class LoginController {
             UserModel userModel = new UserModel();
             userModel.setId(id);
             userModel.setPassword(password);
-            int isUser =0;
+            int isUser=0;
 
             try {
                 isUser = userInfoService.checkUser(userModel);
@@ -47,7 +47,6 @@ public class LoginController {
                 request.getSession().setAttribute("userModel", null);
                 return "/index";
             }
-
         }
 
     @GetMapping("/register")
@@ -61,8 +60,4 @@ public class LoginController {
         session.invalidate(); // 세션 전체를 날려버림
         return "redirect:/index"; // 로그아웃 후 게시글 목록으로 이동하도록...함
     }
-
-
-
-
 }

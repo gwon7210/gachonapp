@@ -21,6 +21,10 @@ public class Interceptor implements HandlerInterceptor {
         Object obj = session.getAttribute("userModel");
         log.error(request.getRequestURI());
 
+        if(request.getRequestURI().equals("/logout")) {
+            session.invalidate();
+            response.sendRedirect("/first");
+        }
         if(!request.getRequestURI().equals("/first")) {
             if (obj == null&&!request.getRequestURI().equals("/checkuser")) {
                 response.sendRedirect("/first");
@@ -34,15 +38,15 @@ public class Interceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         HttpSession session = request.getSession();
-        ModelMap modelMap = modelAndView.getModelMap();
-        Object userModel = modelMap.get("userModel");
 
+        Object userModel = session.getAttribute("userModel");
         if(userModel != null) {
 
             // 로그인 성공시 Session에 저장후, 초기 화면 이동
             log.info("new login success");
             session.setAttribute(LOGIN, userModel);
-            response.sendRedirect("/");
+        }else{
+            session.invalidate();
         }
 
      }
