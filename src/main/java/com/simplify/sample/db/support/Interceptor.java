@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 @Component
 public class Interceptor implements HandlerInterceptor {
-    private static final String LOGIN = "login";
+    private static final String LOGIN = "userModel";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -25,6 +25,7 @@ public class Interceptor implements HandlerInterceptor {
             session.invalidate();
             response.sendRedirect("/first");
         }
+
         if(!request.getRequestURI().equals("/first")) {
             if (obj == null&&!request.getRequestURI().equals("/checkuser")) {
                 response.sendRedirect("/first");

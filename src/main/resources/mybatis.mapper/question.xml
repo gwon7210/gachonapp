@@ -13,7 +13,7 @@
     </select>
 
     <insert id="createAnswer"  parameterType="QnAmodel" >
-        INSERT INTO id, topic, anwser FROM userQnA
+        INSERT INTO userQnA (id, topic, answer) VALUES (#{id}, #{topic}, #{answer});
     </insert>
 
 </mapper>
