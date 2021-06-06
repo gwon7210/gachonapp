@@ -1,6 +1,8 @@
 package com.simplify.sample.db.login.controller;
 
+ import com.simplify.sample.db.login.model.UserEntryModel;
  import com.simplify.sample.db.login.model.UserModel;
+ import com.simplify.sample.db.login.service.QuestionService;
  import com.simplify.sample.db.login.service.UserInfoService;
  import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,11 @@ import org.springframework.stereotype.Controller;
 public class LoginController {
 
     @Autowired
-        UserInfoService userInfoService;
+    UserInfoService userInfoService;
+
+    @Autowired
+    QuestionService questionService;
+
 
         @GetMapping("/first")
         public String loginPage(){
@@ -35,13 +41,19 @@ public class LoginController {
 
             try {
                 isUser = userInfoService.checkUser(userModel);
-                model.addAttribute("userModel", userModel);
+//                model.addAttribute("userModel", userModel);
             } catch (Exception e){
                 log.error("로그인 시도중 오류가 발생했습니다.");
             }
 
+            //로그인 성공
             if(isUser != 0){
+
+
+//
                 request.getSession().setAttribute("userModel", userModel);
+//                model.addAttribute("userModel", userModel);
+//                model.addAttribute("selfIntroduce",userEntryModel.getIntroduction());
                 return "/main/page";
             }else{
                 request.getSession().setAttribute("userModel", null);

@@ -16,4 +16,24 @@
         INSERT INTO userQnA (id, topic, answer) VALUES (#{id}, #{topic}, #{answer});
     </insert>
 
+    <insert id="createUserEntry"  parameterType="UserEntryModel" >
+        INSERT INTO userEntry (id, introduction, mbti, isActive) VALUES (#{id}, #{introduction}, #{mbti}, #{isActive});
+    </insert>
+
+    <select id="getUserEntryCount"  parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM userEntry WHERE id = (#{id})
+    </select>
+
+    <delete id="deleteUserEntry"  parameterType="String">
+        DELETE FROM userEntry WHERE id = (#{id})
+    </delete>
+
+    <delete id="deleteUserAnswer"  parameterType="QnAmodel">
+        DELETE FROM userQnA WHERE id = (#{id}) AND topic = (#{topic})
+    </delete>
+
+    <select id="getUserEntry"  parameterType="UserEntryModel" resultType="UserEntryModel" >
+        SELECT * FROM userEntry WHERE id = (#{id})
+    </select>
+
 </mapper>

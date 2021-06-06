@@ -4,6 +4,7 @@ package com.simplify.sample.db.login.dao;
 import com.simplify.sample.db.login.model.QnAmodel;
 import com.simplify.sample.db.login.model.QuestionEntryModel;
 import com.simplify.sample.db.login.model.QuestionModel;
+import com.simplify.sample.db.login.model.UserEntryModel;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,4 +31,24 @@ public class QuestionDao {
     public int createUserAnswer(QnAmodel model) throws Exception{
         return sqlSession.insert(NAMESPACE + "createAnswer", model);
     }
+
+    public int deleteUserAnswer(QnAmodel model) throws Exception{
+        return sqlSession.insert(NAMESPACE + "deleteUserAnswer", model);
+    }
+
+    public int createUserEntry(UserEntryModel model) throws Exception{
+        return sqlSession.insert(NAMESPACE + "createUserEntry", model);
+    }
+
+    public int getUserEntryCount(UserEntryModel model) throws Exception{
+        return sqlSession.selectOne(NAMESPACE + "getUserEntryCount", model);
+    }
+
+    public int deleteUserEntry(UserEntryModel model) throws Exception{
+        return sqlSession.delete(NAMESPACE + "deleteUserEntry", model);
+    }
+    public UserEntryModel getUserEntry(UserEntryModel model) throws Exception{
+        return sqlSession.selectOne(NAMESPACE + "getUserEntry", model);
+    }
+
 }

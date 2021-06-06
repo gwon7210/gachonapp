@@ -6,6 +6,8 @@ package com.simplify.sample.db.login.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+ import java.util.List;
+
 
 @Repository
 public class LoginDao {
@@ -19,5 +21,11 @@ public class LoginDao {
     public int checkUser(UserModel usermodel) throws Exception{
         return sqlSession.selectOne(NAMESPACE + "checkUser", usermodel);
     }
+
+    public List<UserModel> getRandomUserInfoList() throws Exception{
+        return sqlSession.selectList(NAMESPACE + "getRandomUserInfoList");
+    }
+
+
 
 }

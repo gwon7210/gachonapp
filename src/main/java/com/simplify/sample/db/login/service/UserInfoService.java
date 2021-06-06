@@ -7,6 +7,8 @@ package com.simplify.sample.db.login.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+  import java.util.List;
+
 @Service
 @Slf4j
 public class UserInfoService {
@@ -17,6 +19,10 @@ public class UserInfoService {
 
     public int checkUser(UserModel usermodel) throws Exception {
         return loginDao.checkUser(usermodel);
+    }
+
+    public List<UserModel> getRandomUserInfoList() throws Exception {
+        return loginDao.getRandomUserInfoList();
     }
 
 //    /**
