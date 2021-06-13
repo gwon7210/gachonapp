@@ -24,11 +24,11 @@ public class MatchingController {
         @GetMapping("/getMatchingUser")
         public String getMatchingUser() throws Exception {
 
+            //램덤으로 유저 3명 대려옴
             List<UserModel> userModel = userInfoService.getRandomUserInfoList();
 
-
             // 유저 3명 대려오기
-
+            
             // 각 유저들 이너 조인을 통해 각 유저 정보 가져오기
 
             // 뿌려주기
