@@ -1,6 +1,7 @@
 package com.simplify.sample.db.login.dao;
 
 
+ import com.simplify.sample.db.login.model.UserEntryModel;
  import com.simplify.sample.db.login.model.UserModel;
  import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class LoginDao {
         return sqlSession.selectList(NAMESPACE + "getRandomUserInfoList");
     }
 
+    public List<UserEntryModel> getUserEntry(List<UserModel> userModelList) throws Exception{
+        return sqlSession.selectList(NAMESPACE + "getUserEntry", userModelList);
+    }
 
 
 }

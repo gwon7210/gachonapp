@@ -2,6 +2,7 @@ package com.simplify.sample.db.login.service;
 
 
   import com.simplify.sample.db.login.dao.LoginDao;
+  import com.simplify.sample.db.login.model.UserEntryModel;
   import com.simplify.sample.db.login.model.UserModel;
   import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ public class UserInfoService {
 
     @Autowired
     private LoginDao loginDao;
+    private Object UserModel;
 
 
     public int checkUser(UserModel usermodel) throws Exception {
@@ -23,6 +25,10 @@ public class UserInfoService {
 
     public List<UserModel> getRandomUserInfoList() throws Exception {
         return loginDao.getRandomUserInfoList();
+    }
+
+    public List<UserEntryModel> getUserEntry(List<UserModel> userModelList) throws Exception {
+        return loginDao.getUserEntry(userModelList);
     }
 
 //    /**

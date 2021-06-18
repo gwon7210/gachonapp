@@ -27,7 +27,7 @@ public class Interceptor implements HandlerInterceptor {
 
         HttpSession session = request.getSession();
         Object obj = session.getAttribute("userModel");
-        log.error(request.getRequestURI());
+        log.info(request.getRequestURI());
 
         if(request.getRequestURI().equals("/logout")||request.getRequestURI().equals("/")) {
             session.invalidate();

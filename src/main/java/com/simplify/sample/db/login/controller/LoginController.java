@@ -31,7 +31,7 @@ public class LoginController {
         }
 
          //사용자로 부터 id,pass를 받아 회원 정보를 체크
-        @PostMapping("/checkuser")
+        @RequestMapping("/checkuser")
         public String checkUser(String id, String password, Model model, HttpServletRequest request) throws Exception {
 
             UserModel userModel = new UserModel();
@@ -60,6 +60,8 @@ public class LoginController {
                 return "/index";
             }
         }
+
+
 
     @GetMapping("/register")
     public String registerPage(){

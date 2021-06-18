@@ -14,7 +14,30 @@
 
     <select id="getRandomUserInfoList"  resultType="UserModel">
         select id FROM user WHERE isActive = 1 ORDER BY RAND() LIMIT 3;
-     </select>
+    </select>
+
+    <resultMap type="UserEntryModel" id="users">
+        <id column="id" property="id"/>
+        <result property="animalpicture" column="animalpicture"/>
+        <result property="introduction" column="introduction"/>
+        <result property="mbti" column="mbti"/>
+        <collection column="id"
+                    property="qnAmodelList"
+                    select="getQnAmodelList"></collection>
+    </resultMap>
+
+
+    <select id="getUserEntry" parameterType="List" resultMap="users">
+        select id,animalpicture, introduction, mbti  from userEntry where id in
+        <foreach item="UserModel" collection="list" open="(" separator="," close=")">
+            #{UserModel.id}
+        </foreach>
+    </select>
+
+
+    <select id="getQnAmodelList"  resultType="QnAmodel" parameterType="String">
+        select topic, answer, id FROM userQnA WHERE id = #{id}
+    </select>
 
 
 </mapper>
