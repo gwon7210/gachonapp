@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Slf4j
@@ -24,10 +25,12 @@ public class MatchingController {
 
 
         @GetMapping("/getMatchingUser")
-        public String getMatchingUser(Model model) throws Exception {
+        public String getMatchingUser(Model model, HttpServletRequest request) throws Exception {
+
+            UserModel user = (UserModel)request.getSession().getAttribute("userModel");
 
             //램덤으로 유저 3명 대려옴 (자기는 빼야하는 로직 추가)
-            List<UserModel> userModel = userInfoService.getRandomUserInfoList();
+            List<UserModel> userModel = userInfoService.getRandomUserInfoList(user.getId());
             List<UserEntryModel> userEntryModelList =userInfoService.getUserEntry(userModel);
 
             // 유저 3명 대려오기

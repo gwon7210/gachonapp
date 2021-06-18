@@ -12,8 +12,8 @@
           select count(*) from user where id = (#{id}) and password=(#{password})
     </select>
 
-    <select id="getRandomUserInfoList"  resultType="UserModel">
-        select id FROM user WHERE isActive = 1 ORDER BY RAND() LIMIT 3;
+    <select id="getRandomUserInfoList"  resultType="UserModel" parameterType="String">
+        select id FROM user WHERE isActive = 1 and id != #{id} ORDER BY RAND() LIMIT 3;
     </select>
 
     <resultMap type="UserEntryModel" id="users">

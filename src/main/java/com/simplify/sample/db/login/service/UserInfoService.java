@@ -16,41 +16,20 @@ public class UserInfoService {
 
     @Autowired
     private LoginDao loginDao;
-    private Object UserModel;
 
 
     public int checkUser(UserModel usermodel) throws Exception {
         return loginDao.checkUser(usermodel);
     }
 
-    public List<UserModel> getRandomUserInfoList() throws Exception {
-        return loginDao.getRandomUserInfoList();
+    public List<UserModel> getRandomUserInfoList(String id) throws Exception {
+        return loginDao.getRandomUserInfoList(id);
     }
 
     public List<UserEntryModel> getUserEntry(List<UserModel> userModelList) throws Exception {
         return loginDao.getUserEntry(userModelList);
     }
 
-//    /**
-//     * 유저 계정 정보 저장
-//     *
-//     * @param usermodel
-//     * @return
-//     * @throws Exception
-//     */
-//     public int registerInfo(UserModel usermodel) throws Exception {
-//          return loginDao.registerInfo(usermodel);
-//     }
-//
-//    /**
-//     * 유저 정보 저장
-//     *
-//     * @param usermodel
-//     * @return
-//     * @throws Exception
-//     */
-//    public int registerUserEntry(UserModel usermodel) throws Exception {
-//        return loginDao.registerUserEntry(usermodel);
-//    }
+
 
 }

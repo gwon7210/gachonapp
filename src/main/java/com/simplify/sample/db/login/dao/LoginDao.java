@@ -23,8 +23,8 @@ public class LoginDao {
         return sqlSession.selectOne(NAMESPACE + "checkUser", usermodel);
     }
 
-    public List<UserModel> getRandomUserInfoList() throws Exception{
-        return sqlSession.selectList(NAMESPACE + "getRandomUserInfoList");
+    public List<UserModel> getRandomUserInfoList(String id) throws Exception{
+        return sqlSession.selectList(NAMESPACE + "getRandomUserInfoList", id);
     }
 
     public List<UserEntryModel> getUserEntry(List<UserModel> userModelList) throws Exception{
