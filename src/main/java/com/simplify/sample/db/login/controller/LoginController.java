@@ -1,17 +1,17 @@
 package com.simplify.sample.db.login.controller;
 
- import com.simplify.sample.db.login.model.UserEntryModel;
- import com.simplify.sample.db.login.model.UserModel;
- import com.simplify.sample.db.login.service.QuestionService;
- import com.simplify.sample.db.login.service.UserInfoService;
- import lombok.extern.slf4j.Slf4j;
+import com.simplify.sample.db.login.model.UserModel;
+import com.simplify.sample.db.login.service.QuestionService;
+import com.simplify.sample.db.login.service.UserInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
- import org.springframework.ui.Model;
- import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
- import javax.servlet.http.HttpServletRequest;
- import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Controller
@@ -31,35 +31,30 @@ public class LoginController {
         }
 
          //사용자로 부터 id,pass를 받아 회원 정보를 체크
-        @RequestMapping("/checkuser")
-        public String checkUser(String id, String password, Model model, HttpServletRequest request) throws Exception {
+         @RequestMapping("/checkuser")
+         public String checkUser(String id, String password, Model model, HttpServletRequest request) throws Exception {
 
-            UserModel userModel = new UserModel();
-            userModel.setId(id);
-            userModel.setPassword(password);
-            int isUser=0;
+             UserModel userModel = new UserModel();
+             userModel.setId(id);
+             userModel.setPassword(password);
+             int isUser = 0;
 
-            try {
-                isUser = userInfoService.checkUser(userModel);
-//                model.addAttribute("userModel", userModel);
-            } catch (Exception e){
-                log.error("로그인 시도중 오류가 발생했습니다.");
-            }
+             try {
+                 isUser = userInfoService.checkUser(userModel);
+             } catch (Exception e) {
+                 log.error("로그인 시도중 오류가 발생했습니다.");
+             }
 
-            //로그인 성공
-            if(isUser != 0){
+             //로그인 성공
+             if (isUser != 0) {
 
-
-//
-                request.getSession().setAttribute("userModel", userModel);
-//                model.addAttribute("userModel", userModel);
-//                model.addAttribute("selfIntroduce",userEntryModel.getIntroduction());
-                return "/main/page";
-            }else{
-                request.getSession().setAttribute("userModel", null);
-                return "/index";
-            }
-        }
+                 request.getSession().setAttribute("userModel", userModel);
+                 return "/main/page";
+             } else {
+                 request.getSession().setAttribute("userModel", null);
+                 return "/index";
+             }
+         }
 
 
 

@@ -17,7 +17,7 @@
     </insert>
 
     <insert id="createUserEntry"  parameterType="UserEntryModel" >
-        INSERT INTO userEntry (id, introduction, mbti, isActive) VALUES (#{id}, #{introduction}, #{mbti}, #{isActive});
+        INSERT INTO userEntry (id, introduction, mbti) VALUES (#{id}, #{introduction}, #{mbti});
     </insert>
 
     <select id="getUserEntryCount"  parameterType="String" resultType="int">

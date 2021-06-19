@@ -60,10 +60,12 @@ public class Interceptor implements HandlerInterceptor {
             userEntryModel.setId(userModel.getId());
             userEntryModel = questionService.getUserEntry(userEntryModel);
 
+            if(userEntryModel != null){
+                modelAndView.addObject("selfIntroduce", userEntryModel.getIntroduction() );
+            }
 
             session.setAttribute("userModel", userModel);
-            modelAndView.addObject("selfIntroduce", userEntryModel.getIntroduction() );
-        }else{
+         }else{
             session.invalidate();
         }
 

@@ -40,7 +40,7 @@ public class MatchingController {
             // 뿌려주기
 
             model.addAttribute("userModel", userModel);
-
+            model.addAttribute("userEntryModelList", userEntryModelList);
             return "/matching/matching";
         }
 
