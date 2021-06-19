@@ -22,12 +22,16 @@ public class UserInfoService {
         return loginDao.checkUser(usermodel);
     }
 
-    public List<UserModel> getRandomUserInfoList(String id) throws Exception {
-        return loginDao.getRandomUserInfoList(id);
+    public List<UserModel> getRandomUserInfoList(UserModel userModel) throws Exception {
+        return loginDao.getRandomUserInfoList(userModel);
     }
 
     public List<UserEntryModel> getUserEntry(List<UserModel> userModelList) throws Exception {
         return loginDao.getUserEntry(userModelList);
+    }
+
+    public UserModel getUserInfo(String id) throws Exception {
+        return loginDao.getUserInfo(id);
     }
 
 

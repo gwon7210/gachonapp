@@ -39,5 +39,9 @@
         select topic, answer, id FROM userQnA WHERE id = #{id}
     </select>
 
+    <select id="getUserInfo"  resultType="UserModel" parameterType="String">
+        select * FROM user WHERE id = #{id}
+    </select>
+
 
 </mapper>
