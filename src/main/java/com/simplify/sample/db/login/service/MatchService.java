@@ -21,4 +21,9 @@ public class MatchService {
     }
 
 
+    public int updateWindmillAndLadybird(WindmillAndLadybirdModel windmillAndLadybirdModel) throws Exception {
+        return matchDao.updateWindmillAndLadybird(windmillAndLadybirdModel);
+    }
+
+
 }

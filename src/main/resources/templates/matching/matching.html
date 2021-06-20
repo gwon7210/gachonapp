@@ -122,10 +122,11 @@
                  "상대방은 무당이 하나를 사용하게 되면 당신의 픽처를 볼 수 있고 매칭을 시도할 지 선택할 수 있습니다.") == true){
           alert("바람개비 하나를 사용하여 매칭을 시도하였습니다.");
 
-          var url = '/tryfirstmatch' + '?' + id
+          var url = '/tryfirstmatch' + '?' + 'id=' + id
           var form = document.createElement('form');
+          document.body.appendChild(form);
 
-          form.setAttribute('method', 'get');
+          form.setAttribute('method', 'post');
           form.setAttribute('action', url);
           form.submit();
 

@@ -53,6 +53,9 @@
           <li><a href="#loginplace" class="nav-link scrollto"><i class="bx bx-user"></i> <span>MyPage</span></a></li>
           <li><a href="#MindMap" class="nav-link scrollto"><i class="bx bx-user"></i> <span>나의 MindMap</span></a></li>
           <li><a href="#Matching" class="nav-link scrollto"><i class="bx bx-server"></i> <span>매칭시도</span></a></li>
+          <li><a class="nav-link scrollto"><i class="bx bx-server"></i> <span th:text="'바람개비 : ' + ${newWindmillAndLadybirdModel.windmillCount}"></span></a></li>
+          <li><a class="nav-link scrollto"><i class="bx bx-server"></i> <span th:text="'무당이 : ' + ${newWindmillAndLadybirdModel.ladybirdCount}"></span></a></li>
+
           <li><a href="/logout" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Logout</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->

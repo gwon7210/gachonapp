@@ -45,9 +45,11 @@ public class MatchingController {
 
 
         @PostMapping("/tryfirstmatch")
-        public String tryfirstmatch(String id) throws Exception {
+        public String tryfirstmatch(String id, Model model, HttpServletRequest request)throws Exception {
 
-            UserModel userInfo = userInfoService.getUserInfo(id);
+            UserModel user = (UserModel)request.getSession().getAttribute("userModel");
+
+            UserModel userInfo = userInfoService.getUserInfo(user.getId());
             WindmillAndLadybirdModel windmillAndLadybirdModel = matchService.getWindmillAndLadybirdInfo(userInfo);
 
             //바람개비가 하나 이상일 때만 매칭을 시도한다.
@@ -56,10 +58,12 @@ public class MatchingController {
             }
 
             //바람개비가 하나 이상이면 -1을 한 후 상대방에게 메세지를 보낸다.
+            windmillAndLadybirdModel.setWindmillCount(windmillAndLadybirdModel.getWindmillCount()-1);
+            int rowCount = matchService.updateWindmillAndLadybird(windmillAndLadybirdModel);
 
 
 
-            return "hello";
+            return "/main/page";
         }
 
 }

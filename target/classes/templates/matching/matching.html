@@ -82,7 +82,7 @@
                                 <div class="row">
                                     <div class="col-lg-4" data-aos="fade-right">
                                         <img src="http://localhost:8080/assets/img/profile-img.jpg" class="img-fluid"
-                                             alt="" th:attr="onclick=|trymatching('${userEntryMode}')|">
+                                             alt="" th:attr="onclick=|trymatching('${userEntryMode.id}')|">
                                     </div>
                                     <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
                                         <h3 th:text="${userEntryMode.id}"></h3>
@@ -115,27 +115,27 @@
 </main><!-- End #main -->
 
 <script type="text/javascript">
-  function trymatching(word) {
+  function trymatching(id) {
 
-      alert(word)
-      console.log("hellpo")
-      if(confirm("정말 등록하시겠습니까 ?") == true){
-          alert("등록되었습니다");
+      if(confirm("바람개비 하나를 사용하여 매칭을 시도하겠습니까? " +
+                 "매칭 시도를 하기 되면 본인의 실제 픽쳐가 전송됩니다. " +
+                 "상대방은 무당이 하나를 사용하게 되면 당신의 픽처를 볼 수 있고 매칭을 시도할 지 선택할 수 있습니다.") == true){
+          alert("바람개비 하나를 사용하여 매칭을 시도하였습니다.");
+
+          var url = '/tryfirstmatch' + '?' + 'id=' + id
+          var form = document.createElement('form');
+          document.body.appendChild(form);
+
+          form.setAttribute('method', 'post');
+          form.setAttribute('action', url);
+          form.submit();
+
       }
       else{
           return ;
       }
-
-
-    // var url = '/question/' + topic
-    // var form = document.getElementById('answer');
-    //
-    // form.setAttribute('method', 'get');
-    // form.setAttribute('action', url);
-    //
-    // form.submit();
-
   }
+
 </script>
 
 <!-- ======= Footer ======= -->

@@ -19,4 +19,8 @@ public class MatchDao {
     public WindmillAndLadybirdModel getWindmillAndLadybirdInfo(UserModel userModel) throws Exception{
         return sqlSession.selectOne(NAMESPACE + "getWindmillAndLadybirdInfo", userModel);
     }
+
+    public int updateWindmillAndLadybird(WindmillAndLadybirdModel windmillAndLadybirdModel) throws Exception{
+        return sqlSession.update(NAMESPACE + "updateWindmillAndLadybird", windmillAndLadybirdModel);
+    }
 }

@@ -5,7 +5,12 @@
 <mapper namespace="Account">
 
     <select id="getWindmillAndLadybirdInfo"  resultType="WindmillAndLadybirdModel" parameterType="UserModel">
-        select * FROM windmillAndLadybird WHERE id = #{UserModel.id}
+        select * FROM windmillAndLadybird WHERE id = #{id}
     </select>
+
+
+    <update id="updateWindmillAndLadybird" parameterType="WindmillAndLadybirdModel">
+        UPDATE windmillAndLadybird SET windmillCount = #{windmillCount}, ladybirdCount = #{ladybirdCount} WHERE id = #{id};
+    </update>
 
 </mapper>
