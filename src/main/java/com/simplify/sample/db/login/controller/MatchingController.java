@@ -47,6 +47,7 @@ public class MatchingController {
         @PostMapping("/tryfirstmatch")
         public String tryfirstmatch(String id, Model model, HttpServletRequest request)throws Exception {
 
+
             UserModel user = (UserModel)request.getSession().getAttribute("userModel");
 
             UserModel userInfo = userInfoService.getUserInfo(user.getId());

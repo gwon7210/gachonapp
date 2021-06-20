@@ -69,8 +69,8 @@ public class Interceptor implements HandlerInterceptor {
             }
 
             //바람개비와 무당이 개수를 넣어준다.
-            WindmillAndLadybirdModel newWindmillAndLadybirdModel = matchService.getWindmillAndLadybirdInfo(userModel);
-            modelAndView.addObject("newWindmillAndLadybirdModel", newWindmillAndLadybirdModel);
+            WindmillAndLadybirdModel windmillAndLadybirdModel = matchService.getWindmillAndLadybirdInfo(userModel);
+            modelAndView.addObject("windmillAndLadybirdModel", windmillAndLadybirdModel);
 
             session.setAttribute("userModel", userModel);
         } else {
