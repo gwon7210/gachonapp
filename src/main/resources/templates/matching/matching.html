@@ -121,16 +121,24 @@
       if(confirm("바람개비 하나를 사용하여 매칭을 시도하겠습니까? " +
                  "매칭 시도를 하기 되면 본인의 실제 픽쳐가 전송됩니다. " +
                  "상대방은 무당이 하나를 사용하게 되면 당신의 픽처를 볼 수 있고 매칭을 시도할 지 선택할 수 있습니다.") == true){
+
+          var message = prompt("상대방에게 보낼 간단한 메세지를 적어주세요!");
           alert("바람개비 하나를 사용하여 매칭을 시도하였습니다.");
 
           var url = '/tryfirstmatch' + '?' + 'id=' + id
           var form = document.createElement('form');
           document.body.appendChild(form);
-
           form.setAttribute('method', 'post');
           form.setAttribute('action', url);
-          form.submit();
 
+          var hiddenField = document.createElement("input");
+          hiddenField.setAttribute('type', 'text')
+          hiddenField.setAttribute('name', 'message');
+          hiddenField.setAttribute('value', message);
+
+          form.appendChild(hiddenField);
+
+          form.submit();
       }
       else{
           return ;

@@ -43,5 +43,17 @@
         select * FROM user WHERE id = #{id}
     </select>
 
+    <select id="getUserInfoList" parameterType="List" resultMap="users">
+        select * from userEntry where id in
+        <foreach item="UserModel" collection="list" open="(" separator="," close=")">
+            #{UserModel.id}
+        </foreach>
+    </select>
+
+    <update id="createAnimal"  parameterType="UserEntryModel" >
+        UPDATE userEntry SET  animalpicture = (#{animalpicture}) WHERE id = (#{id});
+    </update>
+
+
 
 </mapper>

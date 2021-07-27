@@ -36,5 +36,15 @@ public class LoginDao {
         return sqlSession.selectOne(NAMESPACE + "getUserInfo", id);
     }
 
+    public List<UserModel> getUserInfoList(List<UserModel> userModelList) throws Exception {
+        return sqlSession.selectList(NAMESPACE + "getUserInfoList", userModelList);
+    }
+
+    public int createAnimal(UserEntryModel model) throws Exception{
+        return sqlSession.update(NAMESPACE + "createAnimal", model);
+    }
+
+
+
 
 }

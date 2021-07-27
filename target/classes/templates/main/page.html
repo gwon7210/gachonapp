@@ -53,18 +53,27 @@
           <li><a href="#loginplace" class="nav-link scrollto"><i class="bx bx-user"></i> <span>MyPage</span></a></li>
           <li><a href="#MindMap" class="nav-link scrollto"><i class="bx bx-user"></i> <span>나의 MindMap</span></a></li>
           <li><a href="#Matching" class="nav-link scrollto"><i class="bx bx-server"></i> <span>매칭시도</span></a></li>
-          <li><a class="nav-link scrollto"><i class="bx bx-server"></i> <span th:text="'바람개비 : ' + ${windmillAndLadybirdModel.windmillCount}"></span></a></li>
-          <li><a class="nav-link scrollto"><i class="bx bx-server"></i> <span th:text="'무당이 : ' + ${windmillAndLadybirdModel.ladybirdCount}"></span></a></li>
-
+          <li><a class="nav-link scrollto"><i class="bx bx-server"></i> <span th:text="'바람개비 : ' + ${windmillAndLadybirdModel.windmillCount} + ', '+ '무당이 : ' + ${windmillAndLadybirdModel.ladybirdCount}"></span></a></li>
+          <li><a class="nav-link scrollto"><i class="bx bx-server"></i> <span th:text="'나에게 온 매칭 : ' + ${howManyTryMatching}" onclick="seeProposers()"></span></a></li>
           <li><a href="/logout" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Logout</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
 
+  <script>
+    function seeProposers(){
 
+      var form = document.createElement('form');
+      document.body.appendChild(form);
 
+      form.setAttribute('method', 'get');
+      form.setAttribute('action', '/getproposerinfolist');
 
+      form.submit();
+
+    }
+  </script>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
@@ -235,13 +244,26 @@
               <input type="button" value="mbti 검사하러 가기" onclick="window.open('https://bit.ly/3h3MY3I')"></input>
             </div>
 
-            <h3 class="resume-title">자신을 나타낼 귀여운 동물 사진을 골라주세요</h3>
-            <div class="resume-item">
-               <p><em>매칭과정에서 상대방에게 보여지는 동물사진입니다.</em></p>
-             </div>
             </div>
 
             <button type="submit">저장</button>
+          </form>
+
+          <h3 class="resume-title">자신을 나타낼 귀여운 동물 사진을 골라주세요</h3>
+          <div class="resume-item">
+            <p><em>매칭과정에서 상대방에게 보여지는 동물사진입니다.</em></p>
+          </div>
+
+          <label for="animal"></label>
+
+          <form action="/question/createuseranimal" method="post"></form>
+          <select name="animal" id="animal">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+          <input type="submit">
           </form>
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">

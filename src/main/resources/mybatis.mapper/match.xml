@@ -8,9 +8,21 @@
         select * FROM windmillAndLadybird WHERE id = #{id}
     </select>
 
-
     <update id="updateWindmillAndLadybird" parameterType="WindmillAndLadybirdModel">
         UPDATE windmillAndLadybird SET windmillCount = #{windmillCount}, ladybirdCount = #{ladybirdCount} WHERE id = #{id};
     </update>
+
+    <insert id="sendFirstMessage" parameterType="HashMap">
+        INSERT INTO firstmatch (sender, receiver, message) VALUES (#{sender}, #{receiver}, #{message});
+    </insert>
+
+    <select id="getFirstMatch"  resultType="Matchingmodel" parameterType="UserModel">
+        select * FROM firstmatch WHERE receiver = #{id}
+    </select>
+
+    <insert id="insertThirdMatchYesorNo" parameterType="Map">
+        INSERT INTO thirdmatch(sender, receiver) VALUE (#{sender}, #{receiver});
+    </insert>
+
 
 </mapper>

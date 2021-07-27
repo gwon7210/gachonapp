@@ -34,6 +34,12 @@ public class UserInfoService {
         return loginDao.getUserInfo(id);
     }
 
+    public List<UserModel> getUserInfoList(List<UserModel> userModelList) throws Exception {
+        return loginDao.getUserInfoList(userModelList);
+    }
 
+    public int createAnimal(UserEntryModel model) throws Exception {
+        return loginDao.createAnimal(model);
+    }
 
 }

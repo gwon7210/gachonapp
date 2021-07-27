@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -39,7 +42,6 @@ public class QuestionController {
             questionService.deleteUserEntry(userEntryModel);
         }
 
-
         userEntryModel.setId(userModel.getId());
         userEntryModel.setIntroduction(selfIntroduce);
         userEntryModel.setMbti(mbti);
@@ -50,6 +52,22 @@ public class QuestionController {
         model.addAttribute("selfIntroduce",selfIntroduce);
         return "/main/page";
     }
+
+    //동물 사진 등록
+    @PostMapping("/question/createuseranimal")
+    public String createUserAnimal(@RequestBody UserEntryModel userEntryModel,HttpServletRequest request, Model model) throws Exception {
+
+
+        UserModel userModel = (UserModel)request.getSession().getAttribute("userModel");
+        userEntryModel.setId(userModel.getId());
+        int rowCount = userInfoService.createAnimal(userEntryModel);
+
+
+
+        return "/main/page";
+    }
+
+
 
     //재미있는 질문들 조회
     @GetMapping("/question/{topic}")

@@ -67,8 +67,8 @@
         <div class="container">
 
             <div class="section-title">
-                <h2>매칭 그라운드</h2>
-                <p>다음 3명의 사람들의 마인드맵을 보고 한명을 선택해 주세요! 선택한 사람에게는 당신의 바람개비가 전달되고, 그 사람은 당신의 사진을 포함한 마인드맵을 볼 수 있습니다.</p>
+                <h2> </h2>
+                <p>당신에게 바람개비를 보낸 사람들입니다. 당신은 무당이를 사용하면 그 사람에 대한 픽쳐를 볼 수 있고, 승락 메세지를 보낼 수 있습니다! </p>
             </div>
 
             <div class="row">
@@ -117,26 +117,16 @@
 <script type="text/javascript">
   function trymatching(id) {
 
+      if(confirm("무당이 하나를 사용하여 상대방의 픽쳐를 보고 매칭을 결정하시겠습니까?"
+                  +
+                 "매칭시도시 상대방이 최종적으로 바람개비를 사용한다면 매칭이 성공하게 됩니다. ") == true){
 
-      if(confirm("바람개비 하나를 사용하여 매칭을 시도하겠습니까? " +
-                 "매칭 시도를 하기 되면 본인의 실제 픽쳐가 전송됩니다. " +
-                 "상대방은 무당이 하나를 사용하게 되면 당신의 픽처를 볼 수 있고 매칭을 시도할 지 선택할 수 있습니다.") == true){
 
-          var message = prompt("상대방에게 보낼 간단한 메세지를 적어주세요!");
-          alert("바람개비 하나를 사용하여 매칭을 시도하였습니다.");
-
-          var url = '/tryfirstmatch' + '?' + 'id=' + id
+          var url = '/trysecondmatch' + '?' + 'id=' + id
           var form = document.createElement('form');
           document.body.appendChild(form);
-          form.setAttribute('method', 'post');
+          form.setAttribute('method', 'get');
           form.setAttribute('action', url);
-
-          var hiddenField = document.createElement("input");
-          hiddenField.setAttribute('type', 'text')
-          hiddenField.setAttribute('name', 'message');
-          hiddenField.setAttribute('value', message);
-
-          form.appendChild(hiddenField);
 
           form.submit();
       }
