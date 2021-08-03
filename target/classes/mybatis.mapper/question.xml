@@ -36,4 +36,9 @@
         SELECT * FROM userEntry WHERE id = (#{id})
     </select>
 
+
+
+
+
+
 </mapper>
